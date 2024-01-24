@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   db:
@@ -9,11 +9,11 @@ services:
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     ports:
-      - '5432:5432'
+      - "5432:5432"
 
-  app:
+  api:
     build:
-      context: .
+      context: api
       dockerfile: Dockerfile
     environment:
       - PORT=${PORT:-3000}
@@ -22,4 +22,19 @@ services:
     depends_on:
       - db
     volumes:
-      - ./src:/app/src
+      - ./api/src:/app/src
+
+  app:
+    build:
+      context: app
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: "npm run dev"
+    depends_on:
+      - api
