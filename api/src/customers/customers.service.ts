@@ -18,7 +18,11 @@ export class CustomersService {
   }
 
   findAll() {
-    return this.customerRepository.find();
+    return this.customerRepository.find({
+      order: {
+        id: 'DESC',
+      },
+    });
   }
 
   findOne(id: number) {

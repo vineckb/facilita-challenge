@@ -20,11 +20,30 @@ export async function fetchCustomers() {
   return response.data;
 }
 
+export async function fetchCustomer(id: number) {
+  const response = await api.get(`/customers/${id}`);
+
+  return response.data;
+}
+
 export function deleteCustomer(id: number) {
   return api.delete(`/customers/${id}`);
 }
 
 export async function createCustomer(data: ICustomerDTO) {
-  const response = await api.post("/customers", { data });
+  const response = await api.post("/customers", {
+    ...data,
+    x: +data.x,
+    y: +data.y,
+  });
+  return response.data;
+}
+
+export async function updateCustomer(id: number, data: ICustomerDTO) {
+  const response = await api.patch(`/customers/${id}`, {
+    ...data,
+    x: +data.x,
+    y: +data.y,
+  });
   return response.data;
 }

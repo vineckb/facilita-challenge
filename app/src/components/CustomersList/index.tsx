@@ -16,18 +16,19 @@ export interface CustomersListProps {
 }
 
 export function CustomersList({ data, isLoading }: CustomersListProps) {
-  if (isLoading) return <p>Carregando...</p>;
+  if (isLoading || !data) return <p>Carregando...</p>;
+  console.log("dataaaa", data);
 
   return (
     <List>
-      {data.map((item, index) => (
-        <ListItemButton href={`/${item.id}`} key={index}>
+      {data?.map((item, index) => (
+        <ListItemButton href={`/customer/${item.id}`} key={index}>
           <ListItemAvatar>
             <Avatar>
               <PersonIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary={item.id} secondary={item.email} />
+          <ListItemText primary={item.name} secondary={item.email} />
           <ListItemText secondary={item.phone} />
 
           <ListItemSecondaryAction>
