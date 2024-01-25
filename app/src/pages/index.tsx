@@ -1,5 +1,5 @@
 import { CustomersList } from "@/components/CustomersList";
-import { useFetchCustomers } from "@/services/api";
+import { useFetchCustomers } from "@/hooks/api";
 import styled from "@emotion/styled";
 
 export default function Home() {

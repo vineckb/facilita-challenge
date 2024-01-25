@@ -1,7 +1,8 @@
-import { QueryClient, useMutation, useQuery } from "@tanstack/react-query";
+import { ICustomerDTO } from "@/types";
+import { QueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
-export const api = axios.create({
+const api = axios.create({
   baseURL: "http://localhost:3000",
 });
 
@@ -19,22 +20,11 @@ export async function fetchCustomers() {
   return response.data;
 }
 
-export async function deleteCustomer(id: number) {
+export function deleteCustomer(id: number) {
   return api.delete(`/customers/${id}`);
 }
 
-export function useFetchCustomers() {
-  return useQuery({
-    queryKey: ["customers"],
-    queryFn: fetchCustomers,
-  });
-}
-
-export function useDeleteCustomer(id: number) {
-  return useMutation({
-    mutationFn: () => deleteCustomer(id),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["customers"] });
-    },
-  });
+export async function createCustomer(data: ICustomerDTO) {
+  const response = await api.post("/customers", { data });
+  return response.data;
 }

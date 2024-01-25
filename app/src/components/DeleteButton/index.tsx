@@ -1,4 +1,4 @@
-import { useDeleteCustomer } from "@/services/api";
+import { useDeleteCustomer } from "@/hooks/api";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { CircularProgress, IconButton } from "@mui/material";
 

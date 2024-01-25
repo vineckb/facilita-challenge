@@ -8,16 +8,10 @@ import {
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import { DeleteButton } from "../DeleteButton";
-
-export interface Customer {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-}
+import { ICustomerEntity } from "@/types";
 
 export interface CustomersListProps {
-  data: Customer[];
+  data: ICustomerEntity[];
   isLoading: boolean;
 }
 
@@ -27,7 +21,7 @@ export function CustomersList({ data, isLoading }: CustomersListProps) {
   return (
     <List>
       {data.map((item, index) => (
-        <ListItemButton href={`/customers/${item.id}`} key={index}>
+        <ListItemButton href={`/${item.id}`} key={index}>
           <ListItemAvatar>
             <Avatar>
               <PersonIcon />
