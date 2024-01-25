@@ -37,8 +37,9 @@ export function nearestNeighborAlgorithm(waypoints) {
   }
 
   route.push(currentWaypoint);
-  route.push({ id: 0, x: 0, y: 0 });
   const totalDistance = calculateTotalDistance(route);
+
+  route.shift();
 
   return { route, distance: totalDistance };
 }

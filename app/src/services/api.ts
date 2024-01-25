@@ -20,6 +20,12 @@ export async function fetchCustomers() {
   return response.data;
 }
 
+export async function fetchVisitingOrder() {
+  const response = await api.get("/customers/visiting-route");
+
+  return response.data;
+}
+
 export async function fetchCustomer(id: number) {
   const response = await api.get(`/customers/${id}`);
 

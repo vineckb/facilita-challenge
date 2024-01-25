@@ -1,4 +1,5 @@
 import { CustomersList } from "@/components/CustomersList";
+import VisitingOrder from "@/components/VisitingOrder";
 import { useFetchCustomers } from "@/hooks/api";
 import styled from "@emotion/styled";
 import { Button, Grid } from "@mui/material";
@@ -11,7 +12,7 @@ export default function Home() {
   return (
     <Wrapper>
       <Grid container justifyContent="end" gap={5}>
-        <Button>Get Visiting Order</Button>
+        <VisitingOrder />
         <Button variant="contained" onClick={() => push("/create-customer")}>
           Add Customer
         </Button>
