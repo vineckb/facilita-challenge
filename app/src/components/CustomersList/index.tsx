@@ -6,7 +6,7 @@ import {
   ListItemSecondaryAction,
   ListItemText,
 } from "@mui/material";
-import FolderIcon from "@mui/icons-material/Folder";
+import PersonIcon from "@mui/icons-material/Person";
 import { DeleteButton } from "../DeleteButton";
 
 export interface Customer {
@@ -30,7 +30,7 @@ export function CustomersList({ data, isLoading }: CustomersListProps) {
         <ListItemButton href={`/customers/${item.id}`} key={index}>
           <ListItemAvatar>
             <Avatar>
-              <FolderIcon />
+              <PersonIcon />
             </Avatar>
           </ListItemAvatar>
           <ListItemText primary={item.id} secondary={item.email} />
