@@ -1,6 +1,6 @@
 import { useDeleteCustomer } from "@/services/api";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton } from "@mui/material";
+import { CircularProgress, IconButton } from "@mui/material";
 
 export interface DeleteButtonProps {
   id: number;
@@ -12,12 +12,14 @@ export function DeleteButton({ id }: DeleteButtonProps) {
   function handleClick(e: any) {
     e.preventDefault();
     e.stopPropagation();
+
     mutateAsync();
   }
 
   return (
     <IconButton onClick={handleClick} edge="end" aria-label="delete">
       {!isPending && <DeleteIcon />}
+      {isPending && <CircularProgress size={20} />}
     </IconButton>
   );
 }
