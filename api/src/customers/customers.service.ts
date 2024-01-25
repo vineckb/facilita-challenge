@@ -4,6 +4,7 @@ import { UpdateCustomerDto } from './dto/update-customer.dto';
 import { Repository } from 'typeorm';
 import { Customer } from './entities/customer.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { nearestNeighborAlgorithm } from './router.helper';
 
 @Injectable()
 export class CustomersService {
@@ -39,5 +40,11 @@ export class CustomersService {
 
   remove(id: number) {
     return this.customerRepository.delete(id);
+  }
+
+  async visitingRoute() {
+    const customers = await this.customerRepository.find();
+
+    return nearestNeighborAlgorithm(customers);
   }
 }

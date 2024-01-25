@@ -2,7 +2,10 @@
 GET http://localhost:3000/customers
 
 ###
-GET http://localhost:3000/customers/2
+GET http://localhost:3000/customers/visiting-route
+
+###
+GET http://localhost:3000/customers/29
 
 ###
 POST http://localhost:3000/customers
@@ -12,6 +15,7 @@ Content-Type: application/json
   "name": "First Customer",
   "email": "customer@first.com",
   "phone": "+554199999999",
+  "x": 1,
   "y": 1
 }
 

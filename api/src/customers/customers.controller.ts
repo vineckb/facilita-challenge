@@ -25,6 +25,11 @@ export class CustomersController {
     return this.customersService.findAll();
   }
 
+  @Get('visiting-route')
+  visitingRoute() {
+    return this.customersService.visitingRoute();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.customersService.findOne(+id);
