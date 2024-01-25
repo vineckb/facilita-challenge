@@ -39,8 +39,8 @@ export function deleteCustomer(id: number) {
 export async function createCustomer(data: ICustomerDTO) {
   const response = await api.post("/customers", {
     ...data,
-    x: +data.x,
-    y: +data.y,
+    x: ~~data.x,
+    y: ~~data.y,
   });
   return response.data;
 }
@@ -48,8 +48,8 @@ export async function createCustomer(data: ICustomerDTO) {
 export async function updateCustomer(id: number, data: ICustomerDTO) {
   const response = await api.patch(`/customers/${id}`, {
     ...data,
-    x: +data.x,
-    y: +data.y,
+    x: ~~data.x,
+    y: ~~data.y,
   });
   return response.data;
 }

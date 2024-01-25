@@ -7,6 +7,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
+import AddIcon from "@mui/icons-material/Add";
 import { DeleteButton } from "../DeleteButton";
 import { ICustomerEntity } from "@/types";
 
@@ -20,7 +21,18 @@ export function CustomersList({ data, isLoading }: CustomersListProps) {
   console.log("dataaaa", data);
 
   return (
-    <List>
+    <List sx={{ mt: 5 }}>
+      {data.length < 1 && (
+        <ListItemButton href="/create-customer">
+          <ListItemAvatar>
+            <AddIcon />
+          </ListItemAvatar>
+          <ListItemText
+            primary="Empty List"
+            secondary="Start adding customers"
+          />
+        </ListItemButton>
+      )}
       {data?.map((item, index) => (
         <ListItemButton href={`/customer/${item.id}`} key={index}>
           <ListItemAvatar>
